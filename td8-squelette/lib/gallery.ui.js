@@ -4,7 +4,6 @@ export function display_galerie(galerie){
     const galleryContainer = document.getElementById("gallery_container");
     galleryContainer.innerHTML = ""; // Efface le contenu précédent de la galerie
     galerie.photos.forEach(photo => {
-        console.log("testttt")
         const vignette = createVignette(photo);
         galleryContainer.appendChild(vignette);
     });
