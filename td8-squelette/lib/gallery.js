@@ -35,7 +35,10 @@ export async function next(gallerie){
         gallerie.photos = result.photos.map((e) => e.photo);
         gallerie.next = result.links && result.links.next && result.links.next.href;
         gallerie.prev = result.links && result.links.prev && result.links.prev.href;
-
+        const existingPictureElements = document.getElementsByClassName("picture");
+        for (let i = 0; i < existingPictureElements.length; i++) {
+            existingPictureElements[i].remove();
+        }
     }
     return gallerie;
 }
@@ -48,20 +51,33 @@ export async function prev(gallerie){
         gallerie.photos = result.photos.map((e) => e.photo)
         gallerie.next = result.links && result.links.next && result.links.next.href;
         gallerie.prev = result.links && result.links.prev && result.links.prev.href;
-
+        const existingPictureElements = document.getElementsByClassName("picture");
+        for (let i = 0; i < existingPictureElements.length; i++) {
+            existingPictureElements[i].remove();
+        }
     }
-    console.log("test")
     return gallerie;
 }
 
 export async function first(gallerie){
+    const existingPictureElements = document.getElementsByClassName("picture");
+    for (let i = 0; i < existingPictureElements.length; i++) {
+        existingPictureElements[i].remove();
+    }
     let result = await loadRessource(firstPage);
     gallerie.photos = result.photos.map((e) => e.photo);
-    return gallerie;
-}
+    gallerie.next = result.links && result.links.next && result.links.next.href;
+    gallerie.prev = result.links && result.links.prev && result.links.prev.href; // Mettre à jour le lien précédent
+    return gallerie;}
 
 export async function last(gallerie){
+    const existingPictureElements = document.getElementsByClassName("picture");
+    for (let i = 0; i < existingPictureElements.length; i++) {
+        existingPictureElements[i].remove();
+    }
+    gallerie.currentPage=11;
     let result = await loadRessource(lastPage);
     gallerie.photos = result.photos.map((e) => e.photo);
-    return gallerie;
-}
+    gallerie.next = result.links && result.links.next && result.links.next.href;
+    gallerie.prev = result.links && result.links.prev && result.links.prev.href; // Mettre à jour le lien précédent
+    return gallerie;}

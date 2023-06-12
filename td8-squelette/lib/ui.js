@@ -31,3 +31,16 @@ export function displayCommentaire(commentaires){
 
     return res
 }
+
+export function displayPictureOnly(photo){
+
+    let res = ' <img src="' + imageURL +photo.url.href + '">'
+
+
+    // res +=  ' <h4>commentaires : </h4>'
+    // res +=  '  <ul id="les_commentaires">'
+    // res +=  '    <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, vitae.</li>'
+    // res +=  '       <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, recusandae.</li>'
+    // res +=  '   </ul>'
+    return res;
+}

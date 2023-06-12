@@ -1,10 +1,36 @@
 // index.js
 
 import {loadPicture, loadRessource} from './lib/photoloader.js';
-import {displayCategorie, displayCommentaire, displayPicture} from "./lib/ui.js";
+import {displayCategorie, displayCommentaire, displayPicture,displayPictureOnly} from "./lib/ui.js";
 import {imageURL} from "./lib/config.js";
 import { load } from './lib/gallery.js';
 import {display_galerie} from './lib/gallery.ui.js';
+
+export function getPictureQ4(id) {
+    loadPicture(id)
+        .then(data => {
+            const galleryContainer = document.getElementById("gallery_container");
+            const pictureElement = document.createElement('div');
+            pictureElement.innerHTML = displayPictureOnly(data.photo);
+
+            // Supprimer les éléments existants en dessous de la galerie
+            const existingPictureElements = document.getElementsByClassName("picture");
+            for (let i = 0; i < existingPictureElements.length; i++) {
+                existingPictureElements[i].remove();
+            }
+
+            pictureElement.classList.add("picture");
+            galleryContainer.parentNode.appendChild(pictureElement);
+        })
+
+
+
+        .catch(error => {
+            console.error(error); // Traitez les erreurs ici
+        });
+
+
+}
 
 export function getPicture(id) {
     loadPicture(id)
@@ -40,7 +66,6 @@ export function getPicture(id) {
 
 
 }
-
 function getCategoryData(imageData) {
     return new Promise((resolve, reject) => {
         const categoryLink = imageURL+imageData.links.categorie.href;

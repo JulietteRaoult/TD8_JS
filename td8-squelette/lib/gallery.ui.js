@@ -1,4 +1,5 @@
-import {imageURL} from "./config.js";
+import {imageURL, photobox} from "./config.js";
+import {getPictureQ4}  from "../index.js";
 
 export function display_galerie(galerie){
     const galleryContainer = document.getElementById("gallery_container");
@@ -10,13 +11,17 @@ export function display_galerie(galerie){
 }
 
 function createVignette(photo) {
-    const vignette = document.createElement("div");
+    const vignette = document.createElement("a");
     vignette.classList.add("vignette");
 
     const img = document.createElement("img");
     img.src = imageURL + photo.thumbnail.href;
     img.dataset.photoId = photo.id;
     vignette.appendChild(img);
+
+    vignette.addEventListener("click", () => {
+        getPictureQ4(photo.id); // Appeler la méthode getPicture avec l'ID de la photo
+    });
 
     return vignette;
 }
