@@ -1,5 +1,5 @@
 import {loadRessource} from "./photoloader.js";
-import {imageURL, photobox} from "./config.js";
+import {firstPage, imageURL, lastPage, photobox} from "./config.js";
 export async function load(){
     const gallerie = {
         photos: [],
@@ -51,5 +51,17 @@ export async function prev(gallerie){
 
     }
     console.log("test")
+    return gallerie;
+}
+
+export async function first(gallerie){
+    let result = await loadRessource(firstPage);
+    gallerie.photos = result.photos.map((e) => e.photo);
+    return gallerie;
+}
+
+export async function last(gallerie){
+    let result = await loadRessource(lastPage);
+    gallerie.photos = result.photos.map((e) => e.photo);
     return gallerie;
 }
