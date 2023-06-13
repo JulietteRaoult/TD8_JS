@@ -1,25 +1,36 @@
 import {imageURL}  from "./config.js";
+
+/**
+ * Fcontion pour afficher la photo
+ * @param {*} photo 
+ * @returns la reponse html
+ */
 export function displayPicture(photo){
 
-   let res = ' <img src="' + imageURL +photo.url.href + '">'
+    // on construit la photo
+   let  res = ' <img src="' + imageURL +photo.url.href + '">'
        res +=  '<h4>'+ photo.titre +'</h4>'
     res +=  ' <p>'+ photo.descr + '</p>'
     res +=  '  <p>'+ photo.type + ', '+ photo.width + ' , ' + photo.height +'</p>'
 
-    // res +=  ' <h4>commentaires : </h4>'
-    // res +=  '  <ul id="les_commentaires">'
-    // res +=  '    <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, vitae.</li>'
-    // res +=  '       <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, recusandae.</li>'
-    // res +=  '   </ul>'
     return res;
 }
 
+/**
+ * Fonction pour afficher la gallerie
+ * @param {*} categorie 
+ * @returns la reponse html
+ */
 export function displayCategorie(categorie){
     let res =' <h4 id="la_categorie">categorie : '+ categorie.nom + '</h4>';
-
     return res
 }
 
+/**
+ * Fonction pour ajouter les commentaires
+ * @param {*} commentaires 
+ * @returns la reponse html
+ */
 export function displayCommentaire(commentaires){
     console.log(commentaires.comments.size);
     let res =' <h4>commentaires : </h4>'
@@ -32,15 +43,14 @@ export function displayCommentaire(commentaires){
     return res
 }
 
+/**
+ * Fonction pour afficher uniquement l'image
+ * Question 4
+ * @param {*} photo 
+ * @returns la réponse html
+ */
 export function displayPictureOnly(photo){
 
     let res = ' <img src="' + imageURL +photo.url.href + '">'
-
-
-    // res +=  ' <h4>commentaires : </h4>'
-    // res +=  '  <ul id="les_commentaires">'
-    // res +=  '    <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, vitae.</li>'
-    // res +=  '       <li>pseudo : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, recusandae.</li>'
-    // res +=  '   </ul>'
     return res;
 }

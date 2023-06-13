@@ -1,11 +1,13 @@
 // index.js
 
-import {loadPicture, loadRessource} from './lib/photoloader.js';
+import {loadPicture} from './lib/photoloader.js';
 import {displayCategorie, displayCommentaire, displayPicture,displayPictureOnly} from "./lib/ui.js";
 import {imageURL} from "./lib/config.js";
-import { load } from './lib/gallery.js';
-import {display_galerie} from './lib/gallery.ui.js';
 
+/**
+ * Fonction pour avoir l'image pour la question 4
+ * @param {*} id 
+ */
 export function getPictureQ4(id) {
     loadPicture(id)
         .then(data => {
@@ -32,6 +34,10 @@ export function getPictureQ4(id) {
 
 }
 
+/**
+ * Fonction pour avoir l'image ainsi que les commentaires, etc...
+ * @param {*} id 
+ */
 export function getPicture(id) {
     loadPicture(id)
         .then(data => {
@@ -63,9 +69,13 @@ export function getPicture(id) {
         .catch(error => {
             console.error(error); // Traitez les erreurs ici
         });
-
-
 }
+
+/**
+ * Fonction pour vaori la categorie d'une image
+ * @param {*} imageData 
+ * @returns la reponse
+ */
 function getCategoryData(imageData) {
     return new Promise((resolve, reject) => {
         const categoryLink = imageURL+imageData.links.categorie.href;
@@ -85,6 +95,11 @@ function getCategoryData(imageData) {
     });
 }
 
+/**
+ * Fcontion pour avoir les commentaires d'une images
+ * @param {*} imageData 
+ * @returns la reponse
+ */
 function getCommentData(imageData) {
     return new Promise((resolve, reject) => {
         const categoryLink = imageURL+imageData.links.comments.href;

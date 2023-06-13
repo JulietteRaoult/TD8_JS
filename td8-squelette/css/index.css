@@ -1,4 +1,41 @@
-img {
+.vignette img {
     max-width: 100%;
-    height: auto;
+    height: 266px;
+    width: 400px;
+  }
+
+img {
+max-width: 100%;
+height: auto;
 }
+  
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacement de 10 pixels entre les éléments */
+  }
+
+  
+
+nav {
+    margin-bottom: 10px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  

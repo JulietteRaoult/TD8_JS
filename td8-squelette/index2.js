@@ -1,9 +1,7 @@
-import {loadPicture, loadRessource} from './lib/photoloader.js';
-import {displayCategorie, displayCommentaire, displayPicture} from "./lib/ui.js";
-import {imageURL, photobox} from "./lib/config.js";
 import { load,prev,next,first,last } from './lib/gallery.js';
 import {display_galerie} from './lib/gallery.ui.js';
 
+// Permet de charger toutes la gallerie
 
 let gallery;
 document.getElementById("load_gallery").addEventListener("click", async () => {
